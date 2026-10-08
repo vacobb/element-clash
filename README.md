@@ -4,6 +4,8 @@ Element Clash is a real-time multiplayer spellcrafting arena game for **2–8 pl
 
 The game combines the quick decisions of an arena battle with the strategy of crafting: spend ingredients on a simple spell now, or save them for a larger combination?
 
+Play game here: <[URL](https://celadon-toffee-3ceba3.netlify.app)>
+
 ## Features
 
 - **26 spell recipes** using combinations of fire, water, earth, and air.
@@ -154,3 +156,13 @@ Storage checks use the real Netlify Blobs SDK against an HTTP protocol emulator 
 - Explore progression and cosmetic rewards.
 - Continue testing with larger groups and different mobile devices.
 - Refine balance, accessibility, and feedback based on player experience.
+
+---
+
+## Author
+
+**Vaughn Cobb**
+
+Software Development Student @ CSCC \
+AWS Certified Cloud & AI Practitioner \
+Aspiring Full-Stack Developer
