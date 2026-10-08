@@ -1,0 +1,39 @@
+# Installed dependencies
+node_modules/
+
+# Generated builds and function verification artifacts
+/dist/
+/artifacts/
+
+# Netlify local state and caches
+.netlify/
+.cache/
+.vite/
+coverage/
+
+# Local secrets (not required for deployment)
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Locally generated upload archives
+*.zip
+
+# Keep package-lock.json and the root index.html tracked.
+# Netlify Drop uses the complete project; generated dist is included in its ZIP.

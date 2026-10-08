@@ -1,0 +1,382 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5"><meta name="theme-color" content="#101019"><title>Element Clash — Craft. Aim. Survive.</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root{--bg:#101019;--panel:#1a1a27;--line:#303041;--ink:#f3f0ff;--muted:#aaa8bb;--accent:#b5a0ff;--fire:#ff9669;--water:#83d5ff;--earth:#d8c185;--air:#9ce1c5}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer;color:inherit;border:1px solid var(--line);background:#252534;border-radius:10px;padding:12px 18px;font-weight:600}button:not(:disabled):hover{border-color:var(--accent);background:#343045}button:disabled{opacity:.4;cursor:not-allowed}button.primary{background:var(--accent);color:#171123;border-color:var(--accent)}button.small{padding:8px 12px;font-size:12px}input,select{background:#11111c;border:1px solid var(--line);color:var(--ink);border-radius:9px;padding:13px;width:100%;outline:none}input:focus,select:focus{border-color:var(--accent)}h1,h2,h3,.brand{font-family:'Space Grotesk',system-ui,sans-serif}h1{font-size:clamp(44px,6vw,82px);letter-spacing:-4px;line-height:1.02;margin:20px 0}h2{font-size:30px;letter-spacing:-1px;margin:0 0 14px}h3{margin:0 0 10px}p{color:var(--muted);line-height:1.65}label{display:block;font-size:12px;color:var(--muted);margin:18px 0 8px}.hidden{display:none!important}.pill{display:inline-flex;gap:8px;align-items:center;padding:7px 11px;font-size:11px;border:1px solid var(--line);border-radius:100px;letter-spacing:1px;color:var(--muted)}.dot{width:6px;height:6px;background:var(--air);border-radius:50%}.topbar{height:78px;padding:0 6vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{font-size:20px;font-weight:700;display:flex;align-items:center;gap:12px}.brandmark{display:grid;place-items:center;width:32px;height:32px;background:var(--accent);color:#171123;border-radius:9px;transform:rotate(-10deg)}.shell{max-width:1300px;margin:auto;padding:55px 6vw}.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--accent);font-weight:700}.hero p{max-width:470px;font-size:16px}.accent{color:var(--accent)}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.miniinfo{display:flex;gap:20px;font-size:12px;color:var(--muted);margin-top:24px}.arena-art{position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at center,#333046,#181821 75%);height:430px;box-shadow:0 30px 70px #0004}.arena-art canvas{width:100%;height:100%}.artlabel{position:absolute;bottom:20px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;pointer-events:none}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:65px;border-top:1px solid var(--line);padding-top:28px}.step{font-size:13px;color:var(--muted)}.step strong{color:var(--ink);display:block;font-size:15px;margin:10px 0}.num{color:var(--accent);font-size:11px;letter-spacing:2px}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}.lobbygrid{display:grid;grid-template-columns:1fr 340px;gap:22px}.roomcode{font-size:38px;letter-spacing:7px;color:var(--accent);font-family:'Space Grotesk',sans-serif;font-weight:700}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.playerrow{padding:16px 0;border-top:1px solid var(--line);display:flex;align-items:center;gap:14px}.avatar{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;font-weight:700;background:var(--pc);color:#171123}.playerrow small{color:var(--muted)}.playerrow .status{margin-left:auto;font-size:12px}.modalback{position:fixed;inset:0;background:#090912c9;z-index:50;display:grid;place-items:center;padding:20px;backdrop-filter:blur(8px)}.modal{max-width:470px;width:100%;padding:30px;max-height:90dvh;overflow:auto}.modal.wide{max-width:980px}.modal p{font-size:14px}.modalclose{float:right;background:none;border:0;padding:3px 8px;color:var(--muted);font-size:22px}.recipegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.recipe{padding:15px;border:1px solid var(--line);border-radius:12px;background:#14141f}.recipe h3{font-size:14px}.recipe p{font-size:11px;min-height:32px;line-height:1.4;margin:8px 0}.cost{font-size:12px;display:flex;gap:9px}.recipe .row{margin-top:10px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}.filters button.active{background:var(--accent);color:#171123}.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);padding:12px 22px;border-radius:10px;background:#393349;border:1px solid #756887;z-index:100;font-size:13px;max-width:90vw;text-align:center}.foot{margin-top:36px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between}.game{position:fixed;inset:0;background:#14141d;overflow:hidden}.game canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;touch-action:none;outline:none}.gametop,.gamebottom,.touchcontrols{z-index:2}.gametop{position:absolute;top:14px;left:18px;right:18px;display:flex;justify-content:space-between;gap:10px;pointer-events:none}.hudbox{background:#171722e8;border:1px solid #3a364d;border-radius:12px;padding:10px 14px;pointer-events:auto;backdrop-filter:blur(8px)}.hudleft{width:220px}.healthbar{height:7px;background:#3a303f;border-radius:7px;overflow:hidden;margin:7px 0}.healthfill{height:100%;background:var(--air);transition:width .1s}.healthline{display:flex;justify-content:space-between;font-size:12px}.shieldtext{font-size:10px;color:var(--water)}.matchinfo{text-align:center;align-self:flex-start;font-size:12px}.matchinfo strong{display:block;font-size:19px;margin-bottom:3px}.gamemenu{pointer-events:auto;display:flex;gap:7px;align-self:flex-start}.gamebottom{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;align-items:center}.inventory{display:flex;gap:15px;justify-content:center;font-size:14px}.inventory .count{font-weight:700;margin-left:4px}.slots{display:flex;gap:8px}.slot{width:135px;min-height:57px;text-align:left;position:relative;padding:9px 12px;background:#1c1b2bee;border-color:#50435e}.slot.selected{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.slot small{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}.quicklabel{font-size:9px;letter-spacing:.7px;color:var(--muted);text-align:center;max-width:90vw}.quick{display:flex;gap:6px;max-width:94vw;justify-content:center;flex-wrap:wrap}.preparelabel{display:block;font-size:9px;color:var(--accent);margin-top:4px}.suggestcost{display:flex;gap:6px;justify-content:center;margin-top:4px;font-size:9px}.quick button{font-size:10px;padding:7px 10px}.hint{font-size:10px;color:var(--muted);text-align:center}.feed{position:absolute;left:18px;top:120px;font-size:11px;color:#d2c9e0;pointer-events:none}.feed div{margin:5px 0;background:#171722aa;padding:5px 8px;border-radius:6px}.touchcontrols{display:none;position:absolute;inset:0;pointer-events:none}.stick{position:absolute;bottom:115px;width:110px;height:110px;border-radius:50%;background:#aaa0dc10;border:1px solid #aaa0dc55;pointer-events:auto;touch-action:none;display:grid;place-items:center}.stick.left{left:22px}.stick.right{right:22px}.knob{width:44px;height:44px;border-radius:50%;background:#b5a0ff44;border:1px solid #b5a0ff66;pointer-events:none}.sticklabel{position:absolute;bottom:-20px;color:var(--muted);font-size:9px;letter-spacing:1px}.basicbtn{position:absolute;right:45px;bottom:260px;pointer-events:auto;touch-action:none;border-radius:50%;width:68px;height:68px;background:#2c253dd9;font-size:10px;padding:0}.scoretable{width:100%;border-collapse:collapse;font-size:13px}.scoretable td,.scoretable th{text-align:left;border-bottom:1px solid var(--line);padding:12px 8px}.scoretable th{color:var(--muted);font-size:11px}.winner{font-size:37px;line-height:1.2;color:var(--accent);margin:15px 0}.tablenote{font-size:12px;color:var(--muted)}.controlgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.controlgrid p{margin:8px 0}.key{padding:2px 6px;background:#343041;border-radius:4px;color:var(--ink)}
+@media(pointer:coarse){.touchcontrols{display:block}.desktophint{display:none}.slot{width:100px}.gamebottom{bottom:12px}.gametop{left:8px;right:8px;top:8px}.hudleft{width:170px}.gamemenu button{padding:8px;font-size:10px}.feed{top:105px;left:8px;max-width:45vw}}@media(max-width:800px){.hero{grid-template-columns:1fr;gap:32px}.shell{padding:32px 6vw}.arena-art{height:320px}.steps{margin-top:35px;gap:16px}.lobbygrid{grid-template-columns:1fr}.recipegrid{grid-template-columns:repeat(2,1fr)}.topbar{height:65px}.topbar .pill{display:none}h1{letter-spacing:-2px}.controlgrid{grid-template-columns:1fr}.modal{padding:22px}.matchinfo{padding:8px;font-size:10px}.matchinfo strong{font-size:15px}.gametop{gap:5px}.hudleft{width:150px}.inventory{gap:10px;font-size:12px}.slot{width:98px;font-size:11px}.gamemenu{flex-direction:column;gap:3px}.gamemenu button{padding:6px 8px;font-size:10px}}@media(max-width:450px){.steps{grid-template-columns:1fr}.recipegrid{grid-template-columns:1fr}.stick{width:90px;height:90px;bottom:140px}.stick.left{left:12px}.stick.right{right:12px}.basicbtn{right:24px;bottom:260px}.miniinfo{gap:12px;font-size:10px}}
+
+/* Touch HUD rows reserve their height so recipe names never push the hotbar. */
+@media(pointer:coarse){
+ .gamebottom{bottom:calc(8px + env(safe-area-inset-bottom));width:min(94vw,420px);height:213px;display:grid;grid-template-rows:34px 57px 24px 64px 18px;gap:4px;justify-items:center;align-items:stretch}
+ .gamebottom .inventory{width:100%;padding:7px 10px;align-items:center}
+ .gamebottom .slots{height:57px;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+ .gamebottom .slot{width:100%;min-width:0;height:57px;min-height:57px;padding:7px 9px}
+ .gamebottom .slot span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .gamebottom .quicklabel{width:100%;height:24px;line-height:12px;overflow:hidden;align-self:center}
+ .gamebottom .quick{height:64px;width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-width:none}
+ .gamebottom .quick button{min-width:0;height:64px;padding:5px 4px;overflow:hidden;font-size:10px}
+ .gamebottom .quick button>span:first-child{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .gamebottom .quick button.hidden{display:block!important;visibility:hidden;pointer-events:none}
+ .gamebottom #statushint{height:18px;line-height:12px;overflow:hidden;max-width:100%}
+ .stick{bottom:calc(231px + env(safe-area-inset-bottom))}
+ .basicbtn{bottom:calc(354px + env(safe-area-inset-bottom))}
+}
+@media(pointer:coarse) and (orientation:landscape) and (max-height:500px){
+ .gamebottom{width:min(48vw,420px);bottom:calc(4px + env(safe-area-inset-bottom))}
+ .stick{bottom:calc(20px + env(safe-area-inset-bottom))}
+ .basicbtn{bottom:calc(143px + env(safe-area-inset-bottom))}
+}
+
+.quick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:min(94vw,480px);gap:6px}.quick button{height:64px;min-width:0}.quick button>span:first-child{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#loadedspell{width:100%;text-align:center;height:57px;padding:8px}
+@media(pointer:coarse){.gamebottom{height:281px;grid-template-rows:34px 57px 24px 132px 18px}.gamebottom .quick{height:132px;grid-template-rows:64px 64px}.stick{bottom:calc(299px + env(safe-area-inset-bottom))}.basicbtn{bottom:calc(422px + env(safe-area-inset-bottom))}}
+@media(pointer:coarse) and (orientation:landscape) and (max-height:500px){.stick{bottom:20px}.basicbtn{bottom:143px}}
+
+/* Reserve a separate control dock; no spells or inventory cover the arena. */
+.game{--dock-height:170px;display:grid;grid-template-rows:minmax(0,1fr) var(--dock-height)}
+.game canvas{position:relative;inset:auto;grid-row:1;width:100%;height:100%;min-height:0}
+.gamebottom{position:relative;grid-row:2;left:auto;bottom:auto;transform:none;width:100%;height:var(--dock-height);padding:7px max(10px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom));background:#101019;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,680px);grid-template-rows:25px 14px 86px 15px;gap:3px;justify-content:center;justify-items:stretch;align-items:center}
+.gamebottom .inventory{height:25px;padding:3px 10px;border:0;background:none;font-size:12px}
+.gamebottom #loadedspell{display:none}
+.gamebottom .quicklabel{height:14px;font-size:9px;line-height:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gamebottom .quick{width:100%;max-width:none;height:86px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:41px 41px;gap:4px}
+.gamebottom .quick button{height:41px;padding:3px 6px;font-size:11px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:16px 12px;gap:0 5px;text-align:left;align-items:center}
+.gamebottom .quick button>span:first-child{grid-column:1;grid-row:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gamebottom .suggestcost{grid-column:2;grid-row:1;display:flex;margin:0;font-size:9px;gap:4px}
+.gamebottom .preparelabel{grid-column:1 / -1;grid-row:2;font-size:9px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gamebottom .quick button.hidden{display:grid!important;visibility:hidden;pointer-events:none}
+.gamebottom .desktophint{height:15px;grid-row:4;line-height:15px}
+.gamebottom #statushint{display:none}
+@media(pointer:coarse){
+ .game{--dock-height:calc(160px + env(safe-area-inset-bottom))}
+ .gamebottom{grid-template-rows:25px 14px 86px;gap:4px}
+ .gamebottom .slot{display:none}
+ .gamebottom .quicklabel{width:100%;height:14px;line-height:14px;align-self:center}
+ .gamebottom .quick{height:86px;grid-template-rows:41px 41px}
+ .gamebottom .quick button{height:41px;padding:3px 5px;font-size:10px}
+ .stick{bottom:calc(var(--dock-height) + 14px);width:86px;height:86px}
+ .sticklabel{bottom:5px;font-size:8px}
+ .knob{width:35px;height:35px}
+ .basicbtn{bottom:calc(var(--dock-height) + 111px);width:56px;height:56px;right:37px}
+}
+@media(pointer:coarse) and (orientation:landscape) and (max-height:500px){
+ .game{--dock-height:calc(85px + env(safe-area-inset-bottom))}
+ .gamebottom{grid-template-columns:minmax(0,1fr);grid-template-rows:19px 47px;gap:2px;padding-top:4px}
+ .gamebottom .inventory{height:19px;font-size:10px}
+ .gamebottom .quicklabel{display:none}
+ .gamebottom .quick{height:47px;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:47px;gap:4px}
+ .gamebottom .quick button{height:47px;display:flex;flex-direction:column;justify-content:center;align-items:stretch;font-size:9px}
+ .gamebottom .suggestcost{justify-content:flex-start;font-size:8px}
+ .gamebottom .preparelabel{font-size:8px}
+ .stick{bottom:calc(var(--dock-height) + 8px)}
+ .basicbtn{bottom:calc(var(--dock-height) + 100px)}
+}
+.game,.game button,.touchcontrols,.stick,.knob{touch-action:none;-webkit-user-select:none;user-select:none}.game button{-webkit-touch-callout:none}
+#aimStick{display:none!important}.touchcontrols{display:block}.stick.left{display:none}.basicbtn{bottom:calc(var(--dock-height) + 14px);right:18px;width:68px;height:56px;border-radius:12px}@media(pointer:coarse){.stick.left{display:grid}.basicbtn{bottom:calc(var(--dock-height) + 14px);right:18px}}
+.gamebottom .quick button.castready{border-color:var(--accent);background:#39304e;box-shadow:inset 0 0 0 1px #b5a0f54d}.gamebottom .quick button:not(.castready),.gamebottom .quick button:disabled,.gamebottom .quick button:disabled:hover,.gamebottom .quick button:disabled:focus,.gamebottom .quick button:disabled:active{border-color:var(--line);background:#252534;box-shadow:none;outline:none}.gamebottom .quick button:disabled{opacity:.42}
+</style></head><body>
+<header class="topbar" id="header"><div class="brand"><span class="brandmark">✦</span> ELEMENT CLASH</div><div class="row"><span class="pill"><span class="dot"></span>2–8 PLAYERS · LIVE ARENA</span><button class="small" onclick="showHelp()">How to play ↗</button></div></header>
+<main id="home" class="shell"><div class="hero"><section><div class="eyebrow">A LITTLE ALCHEMY. A LOT OF CHAOS.</div><h1>Craft your magic.<br><span class="accent">Outlast your friends.</span></h1><p>Gather elements, invent your arsenal, and take aim. Spend now on a quick spell—or save for something spectacular. Only one wizard walks away.</p><div class="actions"><button class="primary" onclick="openJoin('create')">Create a room ↗</button><button onclick="openJoin('join')">Join with code</button></div><div class="actions" style="margin-top:12px"><button class="small" onclick="practice()">◇ Practice arena</button><button class="small" onclick="openRecipes()">Explore 26 recipes</button></div><div class="miniinfo"><span>◎ Browser-based</span><span>⌁ Desktop + phone</span><span>◷ 3–5 minute battles</span></div></section><div class="arena-art"><canvas id="art" aria-label="Illustration of an elemental battlefield"></canvas><div class="artlabel"><span class="pill">THE ELEMENTAL GROUNDS</span><span style="color:var(--accent)">✦ Four elements. Endless rivalry.</span></div></div></div><div class="steps"><div class="step"><span class="num">01 / GATHER</span><strong>Pick your ingredients.</strong>Find fire, water, earth, and air across the battlefield. Your pack holds eight.</div><div class="step"><span class="num">02 / CRAFT</span><strong>Make your next move.</strong>Combine two to five elements. Prepare one spell, from a quick dash to a devastating firestorm.</div><div class="step"><span class="num">03 / SURVIVE</span><strong>Aim. Cast. Stay standing.</strong>Dodge spells, use cover, and keep ahead of the shrinking storm. Last survivor wins.</div></div><footer class="foot"><span>ELEMENT CLASH / PARTY ARENA</span><span>No downloads. Bring your rivals.</span></footer></main>
+<main id="lobby" class="shell hidden"><div class="row" style="margin-bottom:25px"><div><div class="eyebrow">YOUR NEXT BATTLE STARTS HERE</div><h2 style="margin:10px 0">Gather your wizards.</h2></div><button class="small" onclick="leave()">Leave room</button></div><div class="lobbygrid"><section class="card"><div class="row"><div><small style="color:var(--muted)">ROOM CODE</small><div class="roomcode" id="roomcode"></div></div><button class="small" onclick="copyCode()">Copy code</button></div><p>Share this code and the game link. Everyone joins from their own device.</p><div id="players"></div><div class="actions"><button class="primary" id="start" onclick="startBattle()">Start battle ↗</button><button id="ready" onclick="sendCommand({type:'ready'})">Ready up</button></div><p id="lobbynote" style="font-size:12px"></p></section><aside class="card"><h3>Battle settings</h3><label for="mode">GAME MODE</label><select id="mode" onchange="settings()"><option value="survival">Last wizard standing</option><option value="teams">Teams — Sun vs. Moon</option><option value="skirmish">Skirmish — 3 minutes + respawns</option></select><div id="botsettings" class="hidden"><label for="botdifficulty">COMPUTER TEAMMATE DIFFICULTY</label><select id="botdifficulty" onchange="settings()"><option value="easy">Easy — cautious</option><option value="medium" selected>Medium — balanced</option><option value="hard">Hard — aggressive</option></select><p style="font-size:12px">An odd number of human players adds one computer to the smaller team.</p></div><label for="pace">PACE</label><select id="pace" onchange="settings()"><option value="0.85">Relaxed</option><option value="1" selected>Standard</option><option value="1.15">Fast</option></select><label class="row" style="justify-content:flex-start"><input id="supplies" type="checkbox" checked style="width:auto" onchange="settings()"> Center supply drops</label><p style="font-size:12px">Teams alternate by lobby order. Water fields extinguish burning ground. New arrivals spectate an active match.</p><button class="small" onclick="openRecipes()">Read the spellbook ↗</button></aside></div></main>
+<section class="game hidden" id="game"><canvas tabindex="0" id="battle" aria-label="Live battlefield"></canvas><div class="gametop"><div class="hudbox hudleft"><div class="healthline"><strong id="myname">Wizard</strong><span id="hp">100 / 100</span></div><div class="healthbar"><div class="healthfill" id="healthfill"></div></div><span class="shieldtext" id="shieldtext">No shield</span></div><div class="hudbox matchinfo"><strong id="alivecount">8 wizards remain</strong><span id="clock">00:00</span> · <span id="storm">Storm in 90s</span></div><div class="gamemenu"><button class="small" onclick="openRecipes()">Spellbook [E]</button><button class="small" onclick="showHelp()">Controls</button><button class="small" onclick="leave()">Leave</button></div></div><div class="feed" id="feed"></div><div class="gamebottom"><div class="hudbox inventory" id="inventory"></div><div class="hudbox" id="loadedspell"><strong id="loadedname">No spell loaded</strong><div class="hint" id="loadedhint"></div></div><div class="quicklabel" id="quicklabel"></div><div class="quick" id="quick"><button id="suggestion0" class="hidden" onclick="activateSuggestion(this)"><span id="suggestname0"></span><span class="suggestcost" id="suggestcost0"></span><span class="preparelabel" id="suggestdest0"></span></button><button id="suggestion1" class="hidden" onclick="activateSuggestion(this)"><span id="suggestname1"></span><span class="suggestcost" id="suggestcost1"></span><span class="preparelabel" id="suggestdest1"></span></button><button id="suggestion2" class="hidden" onclick="activateSuggestion(this)"><span id="suggestname2"></span><span class="suggestcost" id="suggestcost2"></span><span class="preparelabel" id="suggestdest2"></span></button><button id="suggestion3" class="hidden" onclick="activateSuggestion(this)"><span id="suggestname3"></span><span class="suggestcost" id="suggestcost3"></span><span class="preparelabel" id="suggestdest3"></span></button><button id="suggestion4" class="hidden" onclick="activateSuggestion(this)"><span id="suggestname4"></span><span class="suggestcost" id="suggestcost4"></span><span class="preparelabel" id="suggestdest4"></span></button><button id="suggestion5" class="hidden" onclick="activateSuggestion(this)"><span id="suggestname5"></span><span class="suggestcost" id="suggestcost5"></span><span class="preparelabel" id="suggestdest5"></span></button></div><div class="hint desktophint">WASD move · Auto aim · Space / attack button basic · 1–6 cast · Click opponent to lock · E spellbook</div><div class="hint" id="statushint"></div></div><div class="touchcontrols"><div class="stick left" id="moveStick"><div class="knob"></div><span class="sticklabel">MOVE</span></div><div class="stick right" id="aimStick"><div class="knob"></div><span class="sticklabel">AIM / RELEASE TO CAST</span></div><button class="basicbtn" id="basicbtn">BASIC<br>ATTACK</button></div></section>
+<div class="modalback hidden" id="joinmodal"><div class="card modal"><button class="modalclose" onclick="hide('joinmodal')">×</button><div class="eyebrow">ENTER THE ARENA</div><h2 id="jointitle" style="margin-top:15px">Create your room.</h2><form onsubmit="event.preventDefault();connect()"><label for="nickname">YOUR WIZARD NAME</label><input id="nickname" maxlength="18" placeholder="e.g. Ember" required autocomplete="nickname"><div id="codefield"><label for="joincode">ROOM CODE</label><input id="joincode" maxlength="6" placeholder="ABC123" style="text-transform:uppercase;letter-spacing:4px" autocomplete="off"></div><button class="primary" id="joinbtn" style="width:100%;margin-top:22px">Enter room ↗</button><p id="joinerror" role="alert"></p></form></div></div>
+<div class="modalback hidden" id="recipesmodal"><div class="card modal wide"><button class="modalclose" onclick="hide('recipesmodal')">×</button><div class="eyebrow">THE SPELLBOOK</div><h2 style="margin-top:12px">Small spells. Big decisions.</h2><p>Order doesn't matter. Ingredients are spent when you craft. Pin up to three favorites with ☆. The arena keeps moving while your spellbook is open.</p><div class="card" style="padding:15px"><div class="row"><strong style="font-size:13px">Experiment with a combination</strong><button class="small" onclick="tray=[0,0,0,0];renderTray()">Clear</button></div><div id="traycontrols" class="actions" style="margin-top:12px"></div><div id="trayresult" style="margin-top:12px;font-size:12px;color:var(--muted)"></div></div><div class="filters" id="filters"></div><div class="recipegrid" id="recipegrid"></div></div></div>
+<div class="modalback hidden" id="helpmodal"><div class="card modal wide"><button class="modalclose" onclick="hide('helpmodal')">×</button><div class="eyebrow">FIELD GUIDE</div><h2 style="margin-top:12px">Your first battle.</h2><div class="controlgrid"><div><h3>Desktop</h3><p>WASD or arrows move. Nearby visible opponents are targeted automatically. Click an opponent to lock; click empty space to clear. Press 1–6 or click a suggestion to cast. Hold Spacebar or BASIC ATTACK for basic shots. E opens the spellbook.</p><h3>Phone</h3><p>Left stick moves. Tap a suggestion to cast immediately. Tap an opponent to lock; tap empty space for automatic targeting. Hold BASIC ATTACK for basic shots. Movement and casting support simultaneous touches.</p></div><div><h3>Gather → craft → cast</h3><p>Walk over ingredients to collect them. Six suggestions match your inventory, with defense always in slot 6. Attacks target a visible opponent in range; healing and shields affect you. Dashes follow your movement direction. A ring marks the current target; gold indicates a lock.</p><h3>Survive the storm</h3><p>100 health. Potions share a 10-second cooldown; large spells share a 4-second cooldown. Shields expire. After 90 seconds on standard pace, the boundary contracts. Last survivor wins. Simultaneous final deaths are a draw.</p></div></div><p>Eliminated wizards drop up to four ingredients and spectate. You have 30 seconds to reconnect; your character remains vulnerable. Teams share victory with no friendly fire. Skirmish lasts three minutes, with four-second respawns and eliminations as the score.</p><button class="primary" onclick="hide('helpmodal')">Got it</button></div></div>
+<div class="modalback hidden" id="resultmodal"><div class="card modal" style="max-width:640px"><div class="eyebrow">BATTLE COMPLETE</div><div class="winner" id="winner"></div><table class="scoretable"><thead><tr><th>PLACE / WIZARD</th><th>ELIMS</th><th>DAMAGE</th></tr></thead><tbody id="results"></tbody></table><p class="tablenote" id="resultnote"></p><div class="actions"><button class="primary" id="rematch" onclick="hide('resultmodal');sendCommand({type:'start'})">Rematch ↗</button><button onclick="backLobby()">Back to lobby</button><button class="small" onclick="leave()">Leave</button></div></div></div><div id="toast" class="toast hidden" role="status"></div>
+<script>const ELEMENTS=['fire','water','earth','air'];
+const COLORS=['#b4a1ff','#61dbc9','#ffad70','#ef81b4','#93c9ff','#e6dc77','#99df87','#dfb7ff'];
+const RECIPES=[];
+function recipe(id,name,cost,kind,description,extra={}){RECIPES.push({id,name,cost,kind,description,tier:cost.reduce((a,b)=>a+b,0),...extra});}
+recipe('fireball','Fireball',[2,0,0,0],'bolt','25 damage · aimed projectile',{damage:25,speed:460,range:570});
+recipe('steam','Steam Burst',[1,1,0,0],'cone','18 damage · close steam cloud',{damage:18,range:150});
+recipe('mine','Ember Mine',[1,0,1,0],'mine','28 damage · proximity trap',{damage:28,range:160});
+recipe('flame','Flame Cone',[1,0,0,1],'cone','20 damage · wide frontal attack',{damage:20,range:180});
+recipe('heal','Healing Potion',[0,2,0,0],'heal','Restore 20 health · 10s potion cooldown',{heal:20});
+recipe('frost','Frost Patch',[0,1,1,0],'zone','Slow opponents in a frost field',{slow:true,range:340,radius:85,duration:5});
+recipe('ice','Ice Bolt',[0,1,0,1],'bolt','15 damage · slows for 2 seconds',{damage:15,slow:true,speed:430,range:570});
+recipe('shield','Stone Shield',[0,0,2,0],'shield','Absorb 25 damage for 5 seconds',{shield:25});
+recipe('shock','Shockwave',[0,0,1,1],'wave','15 damage · push nearby opponents',{damage:15,range:125});
+recipe('dash','Wind Dash',[0,0,0,2],'dash','Dash 150 units toward your aim',{range:150});
+for(const r of [...RECIPES]){const cost=[...r.cost];const idx=r.id==='ice'?3:cost.indexOf(Math.max(...cost));cost[idx]++;recipe('greater-'+r.id,r.id==='ice'?'Swift Ice Bolt':'Greater '+r.name,cost,r.kind,'Upgraded '+r.name.toLowerCase(),{...r,id:'greater-'+r.id,name:r.id==='ice'?'Swift Ice Bolt':'Greater '+r.name,cost,tier:3,damage:r.damage?Math.round(r.damage*1.4):undefined,heal:r.heal?35:undefined,shield:r.shield?40:undefined,range:r.range?Math.round(r.range*1.2):undefined,radius:r.radius?110:undefined,speed:r.speed?600:undefined,duration:r.duration?7:undefined});}
+recipe('meteor','Meteor',[2,0,2,0],'meteor','45 damage · 1.1s warning · area impact',{damage:45,range:440,radius:95,warning:1.1});
+recipe('blizzard','Blizzard',[0,2,0,2],'zone','8 damage/s + slow · lasts 5 seconds',{damage:8,slow:true,range:410,radius:115,duration:5,warning:.7});
+recipe('sanctuary','Sanctuary',[0,2,2,0],'zone','Heal anyone inside 8 health/s for 5s',{heal:8,range:280,radius:95,duration:5,warning:.4});
+recipe('flame-dash','Flame Dash',[1,0,1,2],'dash','Dash 190 units · leave a burning trail',{range:190,damage:12});
+recipe('firestorm','Firestorm',[2,0,1,2],'zone','14 damage/s · 1.5s warning · lasts 5s',{damage:14,range:460,radius:150,duration:5,warning:1.5});
+recipe('fortress','Fortress',[0,1,3,1],'shield','Absorb 65 damage for 7s · move slower',{shield:65,fortress:true});
+const OBSTACLES=[{x:295,y:240,w:100,h:45},{x:805,y:240,w:100,h:45},{x:295,y:715,w:100,h:45},{x:805,y:715,w:100,h:45},{x:530,y:370,w:45,h:100},{x:625,y:530,w:45,h:100},{x:130,y:470,w:80,h:60},{x:990,y:470,w:80,h:60}];
+function uid(){if(crypto.randomUUID)return crypto.randomUUID();const b=crypto.getRandomValues(new Uint8Array(16));b[6]=(b[6]&15)|64;b[8]=(b[8]&63)|128;const h=Array.from(b,x=>x.toString(16).padStart(2,'0')).join('');return h.slice(0,8)+'-'+h.slice(8,12)+'-'+h.slice(12,16)+'-'+h.slice(16,20)+'-'+h.slice(20);}
+function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
+function blocked(x,y,r=14,obstacles=OBSTACLES){return x<r||y<r||x>1200-r||y>1000-r||obstacles.some(o=>x>o.x-r&&x<o.x+o.w+r&&y>o.y-r&&y<o.y+o.h+r);}
+function move(p,dx,dy,s){if(!blocked(p.x+dx,p.y,14,s.obstacles))p.x+=dx;if(!blocked(p.x,p.y+dy,14,s.obstacles))p.y+=dy;}
+function spawnPlayer(p,i,n,s){let angle=i/n*Math.PI*2;p.x=600+Math.cos(angle)*420;p.y=500+Math.sin(angle)*340;
+// Spawn with clear space for the player's radius and their first movement step.
+if(blocked(p.x,p.y,34,s.obstacles)){
+ const desired={x:p.x,y:p.y};let found=false;
+ for(let ring=32;ring<=400&&!found;ring+=16)for(let direction=0;direction<16;direction++){
+  const a=direction*Math.PI/8,x=desired.x+Math.cos(a)*ring,y=desired.y+Math.sin(a)*ring;
+  if(!blocked(x,y,34,s.obstacles)){p.x=x;p.y=y;found=true;break;}
+ }
+}
+p.hp=100;p.alive=true;p.shield=0;p.shieldUntil=0;p.slowUntil=0;p.inv=[0,0,0,0];p.items=[null,null,null];p.kills=0;p.damage=0;p.deathAt=0;p.attackAt=0;p.potionAt=0;p.specialAt=0;p.input={mx:0,my:0,ax:p.x,ay:p.y,fire:false};}
+function randomArena(){
+ const cells=[];
+ for(let row=0;row<4;row++)for(let col=0;col<5;col++){
+  const cx=180+col*210,cy=170+row*210;
+  if(Math.hypot(cx-600,cy-500)<190)continue;
+  cells.push({cx,cy});
+ }
+ for(let i=cells.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[cells[i],cells[j]]=[cells[j],cells[i]];}
+ return cells.slice(0,8+Math.floor(Math.random()*4)).map(({cx,cy})=>{
+  const horizontal=Math.random()<.5,w=horizontal?85+Math.random()*35:40+Math.random()*15,h=horizontal?40+Math.random()*15:85+Math.random()*35;
+  return {x:Math.round(cx-w/2+(Math.random()-.5)*25),y:Math.round(cy-h/2+(Math.random()-.5)*25),w:Math.round(w),h:Math.round(h)};
+ });
+}
+function openIngredientPoint(s){
+ for(let tries=0;tries<3000;tries++){
+  const point={x:60+Math.random()*1080,y:60+Math.random()*880};
+  if(!blocked(point.x,point.y,38,s.obstacles)&&s.sources.every(q=>dist(point,q)>48)&&s.players.every(p=>dist(point,p)>65))return point;
+ }
+ for(let y=60;y<940;y+=50)for(let x=60;x<1140;x+=50)if(!blocked(x,y,38,s.obstacles)&&s.sources.every(q=>dist({x,y},q)>40))return {x,y};
+ throw Error('Could not place a reachable ingredient.');
+}
+function newRoom(code,now){return {code,obstacles:OBSTACLES.map(o=>({...o})),phase:'lobby',host:null,players:[],t:0,last:now,started:0,round:0,shots:[],zones:[],pickups:[],sources:[],events:[],results:[],settings:{mode:'survival',pace:1,supplies:true,botDifficulty:'medium'},nextDrop:40,revision:0};}
+function addPlayer(s,name,token,now){if(s.players.filter(p=>!p.teamBot).length>=8)throw Error('This room is full (8 players).');let p={id:uid(),token,name:name.slice(0,18)||'Wizard',color:COLORS[s.players.filter(p=>!p.teamBot).length],seen:now,seq:0,ready:false,spectator:s.phase==='playing'};spawnPlayer(p,s.players.length,8,s);if(p.spectator)p.alive=false;s.players.push(p);if(!s.host)s.host=p.id;return p;}
+function start(s,now){let ps=s.players.filter(p=>!p.teamBot&&now-p.seen<30000);if(ps.length<2)throw Error('You need at least two connected players.');if(s.settings.mode==='teams'&&ps.length%2){ps.push({id:uid(),token:uid(),name:'Computer ('+(s.settings.botDifficulty||'medium')+')',color:COLORS[ps.length],seen:now,seq:0,ready:true,teamBot:true,difficulty:s.settings.botDifficulty||'medium'});}s.players=ps;s.phase='playing';s.started=now;s.last=now;s.t=0;s.round++;s.shots=[];s.zones=[];s.pickups=[];s.results=[];s.events=[];s.nextDrop=40;s.sources=[];s.obstacles=randomArena();ps.forEach((p,i)=>{spawnPlayer(p,i,ps.length,s);p.spectator=false;p.seq=0;p.team=i%2;p.spawnProtection=2;});
+for(let i=0;i<32;i++){
+ const point=openIngredientPoint(s);
+ s.sources.push({...point,element:i%4,respawn:0});
+}
+
+}
+function enemies(s,a,b){return a.id!==b.id&&b.alive&&!(s.settings.mode==='teams'&&a.team===b.team);}
+function hit(s,target,amount,owner){if(!target.alive||target.spawnProtection>s.t)return;let absorbed=Math.min(target.shield||0,amount);target.shield-=absorbed;amount-=absorbed;let dealt=Math.min(target.hp,amount);target.hp-=dealt;let p=s.players.find(p=>p.id===owner);if(p)p.damage+=dealt;if(target.hp<=0){target.hp=0;target.alive=false;target.deathAt=s.t;target.respawnAt=s.t+4;if(p&&p.id!==target.id)p.kills++;let n=0;for(let i=0;i<4;i++)while(target.inv[i]>0&&n<4){target.inv[i]--;s.pickups.push({id:uid(),element:i,x:target.x,y:target.y});n++;}s.events.unshift({t:s.t,text:target.name+' was eliminated'+(p?' by '+p.name:' by the storm')});s.events=s.events.slice(0,5);}}
+function aim(p,input,range){let dx=input.ax-p.x,dy=input.ay-p.y,len=Math.hypot(dx,dy)||1;return {dx:dx/len,dy:dy/len,x:p.x+dx/len*Math.min(range,len),y:p.y+dy/len*Math.min(range,len)};}
+function cast(s,p,r){const a=aim(p,p.input,r.range||500);if(r.kind==='heal'){if(s.t<p.potionAt)throw Error('Potion is cooling down.');p.hp=Math.min(100,p.hp+r.heal);p.potionAt=s.t+10;}
+else if(r.kind==='shield'){p.shield=Math.max(p.shield,r.shield);p.shieldUntil=s.t+(r.fortress?7:5);p.fortress=!!r.fortress;}
+else if(r.kind==='bolt'){s.shots.push({id:uid(),x:p.x+a.dx*22,y:p.y+a.dy*22,vx:a.dx*r.speed,vy:a.dy*r.speed,life:r.range/r.speed,damage:r.damage,slow:r.slow,owner:p.id,color:r.cost[0]?'#ff9166':'#83dcff'});}
+else if(r.kind==='cone'||r.kind==='wave'){for(const q of s.players){if(!enemies(s,p,q))continue;const d=dist(p,q),dot=((q.x-p.x)*a.dx+(q.y-p.y)*a.dy)/(d||1);if(d<r.range&&(r.kind==='wave'||dot>.55)){hit(s,q,r.damage,p.id);if(r.kind==='wave')move(q,(q.x-p.x)/(d||1)*55,(q.y-p.y)/(d||1)*55,s);}}s.zones.push({id:uid(),kind:'flash',x:p.x,y:p.y,radius:r.range,owner:p.id,start:s.t,end:s.t+.25,color:r.kind==='wave'?'#e9d493':'#ff9166'});}
+else if(r.kind==='dash'){const old={x:p.x,y:p.y};for(let i=0;i<r.range;i+=8)move(p,a.dx*8,a.dy*8,s);if(r.damage)for(let i=0;i<5;i++)s.zones.push({id:uid(),kind:'zone',x:old.x+(p.x-old.x)*i/4,y:old.y+(p.y-old.y)*i/4,radius:35,damage:r.damage,owner:p.id,start:s.t,end:s.t+3,color:'#ff9166'});}
+else{s.zones.push({id:uid(),kind:r.kind,x:a.x,y:a.y,radius:r.radius||52,damage:r.damage,heal:r.heal,slow:r.slow,owner:p.id,start:s.t+(r.warning||0),end:s.t+(r.warning||0)+(r.duration||(r.kind==='mine'?30:.1)),color:r.heal?'#73e1b5':r.slow?'#83dcff':'#ff9166'});}
+}
+function action(s,p,a,now){p.seen=now;if(a.input){let i=a.input;p.input={mx:clamp(Number(i.mx)||0,-1,1),my:clamp(Number(i.my)||0,-1,1),ax:clamp(Number(i.ax)||p.x,0,1200),ay:clamp(Number(i.ay)||p.y,0,1000),fire:!!i.fire};}
+if(!a.command)return;if(!Number.isSafeInteger(a.seq)||a.seq<=p.seq)return;p.seq=a.seq;
+const c=a.command;if(c.type==='ready')p.ready=!p.ready;
+if(c.type==='settings'){if(s.host!==p.id||s.phase==='playing')throw Error('Only the host can change lobby settings.');s.settings={mode:['survival','teams','skirmish'].includes(c.mode)?c.mode:'survival',pace:[.85,1,1.15].includes(c.pace)?c.pace:1,supplies:c.supplies!==false,botDifficulty:['easy','medium','hard'].includes(c.botDifficulty)?c.botDifficulty:'medium'};}
+if(c.type==='start'){if(s.phase==='playing')throw Error('A battle is already in progress.');if(s.host!==p.id)throw Error('Only the host can start.');start(s,now);return;}
+if(s.phase!=='playing'||!p.alive)return;
+if(c.type==='craft'||c.type==='load'){
+ if(c.aim&&Number.isFinite(c.aim.ax)&&Number.isFinite(c.aim.ay)){p.input.ax=clamp(c.aim.ax,0,1200);p.input.ay=clamp(c.aim.ay,0,1000);}
+ const r=RECIPES.find(r=>r.id===c.recipe);if(!r)throw Error('Unknown recipe.');
+ const defensive=r.kind==='heal'||r.kind==='shield';const instant=c.instant===true;
+ if(instant&&!defensive&&s.t<p.attackAt)throw Error('Wait for the cast cooldown.');
+ if(instant&&r.tier>=4&&s.t<p.specialAt)throw Error('Power spell is cooling down.');
+ if(!defensive&&p.items[0])throw Error('Cast your loaded spell before loading another.');
+ if(r.cost.some((v,i)=>p.inv[i]<v))throw Error('Collect the required ingredients first.');
+ if(defensive&&r.kind==='heal'&&s.t<p.potionAt)throw Error('Potion is cooling down.');
+ if(defensive&&r.tier>=4&&s.t<p.specialAt)throw Error('Power spell is cooling down.');
+ r.cost.forEach((v,i)=>p.inv[i]-=v);
+ if(defensive){cast(s,p,r);if(r.tier>=4)p.specialAt=s.t+4;}else if(instant){cast(s,p,r);p.attackAt=s.t+.55;if(r.tier>=4)p.specialAt=s.t+4;}else p.items=[r.id,null,null];
+}
+if(c.type==='cast'){const slot=Number(c.slot);const r=RECIPES.find(r=>r.id===p.items[slot]);if(!r)return;if(s.t<p.attackAt)throw Error('Wait for the cast cooldown.');if(r.tier>=4&&s.t<p.specialAt)throw Error('Power spell is cooling down.');cast(s,p,r);p.items[slot]=null;p.attackAt=s.t+.55;if(r.tier>=4)p.specialAt=s.t+4;}
+if(c.type==='discard'){p.items[clamp(Number(c.slot)||0,0,2)]=null;}
+}
+function finish(s){s.phase='finished';s.results=[...s.players.filter(p=>!p.spectator)].sort((a,b)=>s.settings.mode==='skirmish'?b.kills-a.kills||b.damage-a.damage:Number(b.alive)-Number(a.alive)||b.deathAt-a.deathAt).map(p=>({id:p.id,name:p.name,color:p.color,alive:p.alive,team:p.team,kills:p.kills,damage:Math.round(p.damage),deathAt:p.deathAt}));let living=s.results.filter(p=>p.alive);s.winner=s.settings.mode==='skirmish'?s.results[0]?.name:s.settings.mode==='teams'?(living.length?'Team '+(living[0].team===0?'Sun':'Moon'):'Draw'):living.length===1?living[0].name:'Draw';}
+const BOT_PROFILES={easy:{think:.9,chase:320,gatherDistance:220,fireDuty:.35,healAt:55,jitter:.2},medium:{think:.5,chase:240,gatherDistance:360,fireDuty:.7,healAt:40,jitter:.09},hard:{think:.22,chase:160,gatherDistance:500,fireDuty:1,healAt:28,jitter:.025}};
+function clearRoute(s,a,b){const n=Math.ceil(dist(a,b)/15);for(let i=1;i<=n;i++)if(blocked(a.x+(b.x-a.x)*i/n,a.y+(b.y-a.y)*i/n,16,s.obstacles))return false;return true;}
+function botRoute(s,p,target){
+ if(clearRoute(s,p,target))return [{x:target.x,y:target.y}];
+ const free=[];for(let y=0;y<25;y++)for(let x=0;x<30;x++){const q={x:20+x*40,y:20+y*40,key:y*30+x};if(!blocked(q.x,q.y,16,s.obstacles))free.push(q);}
+ const nearest=a=>free.reduce((best,q)=>!best||dist(a,q)<dist(a,best)?q:best,null);
+ const origin=nearest(p),goal=nearest(target);if(!origin||!goal)return [];
+ const cells=new Map(free.map(q=>[q.key,q])),parent=new Map([[origin.key,null]]),queue=[origin.key];
+ for(let i=0;i<queue.length&&!parent.has(goal.key);i++){const key=queue[i],x=key%30,y=Math.floor(key/30);for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){if(x+dx<0||x+dx>=30||y+dy<0||y+dy>=25)continue;const next=(y+dy)*30+x+dx;if(cells.has(next)&&!parent.has(next)){parent.set(next,key);queue.push(next);}}}
+ if(!parent.has(goal.key))return [];
+ const path=[];for(let key=goal.key;key!==null;key=parent.get(key))path.unshift(cells.get(key));return [...path,{x:target.x,y:target.y}];
+}
+function driveTeamBot(s,p,now){
+ p.seen=now;if(!p.alive){p.input={mx:0,my:0,fire:false,ax:p.x,ay:p.y};return;}
+ const profile=BOT_PROFILES[p.difficulty]||BOT_PROFILES.medium;
+ const enemiesList=s.players.filter(q=>enemies(s,p,q)).sort((a,b)=>dist(p,a)-dist(p,b));const target=enemiesList[0];
+ if(!target){p.input={mx:0,my:0,fire:false,ax:p.x,ay:p.y};return;}
+ const distance=dist(p,target);
+ if(s.t>=(p.nextBrain||0)){
+  p.nextBrain=s.t+profile.think;
+  const reachable=RECIPES.filter(r=>r.cost.every((n,i)=>p.inv[i]>=n));
+  const defense=reachable.find(r=>r.kind==='heal'&&p.hp<profile.healAt&&s.t>=p.potionAt)||reachable.find(r=>r.kind==='shield'&&p.shield<5&&distance<350&&(r.tier<4||s.t>=p.specialAt));
+  const attack=reachable.filter(r=>r.damage&&r.kind!=='mine'&&r.kind!=='dash'&&distance<(r.range||0)&&s.t>=p.attackAt&&(r.tier<4||s.t>=p.specialAt)).sort((a,b)=>b.tier-a.tier)[0];
+  p.input={...p.input,ax:target.x,ay:target.y};const spell=defense||attack;
+  if(spell){spell.cost.forEach((n,i)=>p.inv[i]-=n);cast(s,p,spell);if(!defense)p.attackAt=s.t+.55;if(spell.tier>=4)p.specialAt=s.t+4;}
+  let goal=target;
+  const pickups=[...s.sources.filter(q=>q.respawn<=s.t),...s.pickups].sort((a,b)=>dist(p,a)-dist(p,b));
+  if(p.inv.reduce((a,b)=>a+b,0)<6&&pickups.length&&(distance>profile.gatherDistance||p.inv.reduce((a,b)=>a+b,0)<2))goal=pickups[0];
+  else if(p.hp<profile.healAt&&distance<180){const dx=p.x-target.x,dy=p.y-target.y,len=Math.hypot(dx,dy)||1;goal={x:clamp(p.x+dx/len*140,40,1160),y:clamp(p.y+dy/len*140,40,960)};}
+  else if(distance<profile.chase)goal={x:p.x,y:p.y};
+  if(s.radius<760&&dist(p,{x:600,y:500})>s.radius-65)goal={x:600,y:500};
+  p.botPath=botRoute(s,p,goal);
+ }
+ while(p.botPath?.length&&dist(p,p.botPath[0])<18)p.botPath.shift();
+ const waypoint=p.botPath?.[0];const dx=waypoint?waypoint.x-p.x:0,dy=waypoint?waypoint.y-p.y:0,len=Math.hypot(dx,dy)||1;
+ const angle=Math.atan2(target.y-p.y,target.x-p.x)+Math.sin(s.t*2+p.team)*profile.jitter;
+ p.input={mx:dx/len,my:dy/len,ax:p.x+Math.cos(angle)*distance,ay:p.y+Math.sin(angle)*distance,fire:distance<500&&(s.t%2)/2<profile.fireDuty&&clearRoute(s,p,target)};
+}
+function advance(s,now){let elapsed=Math.max(0,(now-s.last)/1000);s.last=now;const connected=s.players.filter(p=>!p.teamBot&&now-p.seen<3000);if(connected.length&&!connected.some(p=>p.id===s.host))s.host=connected[0].id;
+if(s.phase!=='playing')return;const dtTotal=Math.min(elapsed,.8);const steps=Math.ceil(dtTotal/(1/30));for(let step=0;step<steps;step++){let dt=dtTotal/steps;s.t+=dt;const stormStart=90/s.settings.pace;const radius=s.settings.mode==='skirmish'?760:Math.max(0,760-(Math.max(0,s.t-stormStart)*4.4*s.settings.pace));s.radius=radius;
+for(const p of s.players){if(p.teamBot)driveTeamBot(s,p,now);if(p.spectator)continue;if(!p.alive){if(s.settings.mode==='skirmish'&&s.t>=p.respawnAt&&now-p.seen<30000){let kills=p.kills,damage=p.damage;spawnPlayer(p,s.players.indexOf(p),s.players.length,s);p.kills=kills;p.damage=damage;p.spawnProtection=s.t+2;}continue;}if(now-p.seen>30000){hit(s,p,2000,null);continue;}if(p.shieldUntil<s.t)p.shield=0;
+const input=now-p.seen<700?p.input:{mx:0,my:0,fire:false};let len=Math.hypot(input.mx,input.my);let speed=190*s.settings.pace*(p.slowUntil>s.t?.55:1)*(p.shield&&p.fortress?.65:1);if(len)move(p,input.mx/Math.max(1,len)*speed*dt,input.my/Math.max(1,len)*speed*dt,s);
+if(input.fire&&s.t>=p.attackAt){let a=aim(p,p.input,480);s.shots.push({id:uid(),x:p.x+a.dx*22,y:p.y+a.dy*22,vx:a.dx*540,vy:a.dy*540,life:.9,damage:5,owner:p.id,color:p.color});p.attackAt=s.t+.38;}
+for(const source of s.sources)if(s.t>=source.respawn&&dist(p,source)<29&&p.inv.reduce((a,b)=>a+b,0)<8){p.inv[source.element]++;source.respawn=s.t+7/s.settings.pace;}
+for(const pickup of s.pickups)if(!pickup.taken&&dist(p,pickup)<28&&p.inv.reduce((a,b)=>a+b,0)<8){p.inv[pickup.element]++;pickup.taken=true;}
+if(dist(p,{x:600,y:500})>radius)hit(s,p,12*dt,null);
+}
+s.pickups=s.pickups.filter(p=>!p.taken);
+for(const b of s.shots){b.life-=dt;let x=b.x+b.vx*dt,y=b.y+b.vy*dt;if(blocked(x,y,3,s.obstacles)){b.life=0;continue;}b.x=x;b.y=y;let owner=s.players.find(p=>p.id===b.owner);for(const q of s.players)if(owner&&enemies(s,owner,q)&&dist(q,b)<20){hit(s,q,b.damage,b.owner);if(b.slow)q.slowUntil=s.t+2;b.life=0;break;}}
+s.shots=s.shots.filter(b=>b.life>0);
+for(const z of s.zones){if(z.start>s.t||z.end<s.t||z.kind==='flash')continue;let owner=s.players.find(p=>p.id===z.owner);if(z.kind==='mine'){if(s.players.some(p=>owner&&enemies(s,owner,p)&&dist(z,p)<z.radius)){for(const q of s.players)if(owner&&enemies(s,owner,q)&&dist(z,q)<z.radius+25)hit(s,q,z.damage,z.owner);z.end=0;}continue;}
+for(const q of s.players){if(!q.alive||dist(q,z)>z.radius)continue;if(z.heal)q.hp=Math.min(100,q.hp+z.heal*dt);if(owner&&enemies(s,owner,q)){if(z.damage)hit(s,q,z.kind==='meteor'?z.damage:z.damage*dt,z.owner);if(z.slow)q.slowUntil=s.t+.2;}}
+if(z.kind==='meteor')z.end=0;
+}
+// Water and ice fields extinguish overlapping burning ground and mines.
+for(const wet of s.zones.filter(z=>z.slow&&s.t>=z.start))for(const hot of s.zones)if(hot.color==='#ff9166'&&hot.kind!=='meteor'&&dist(wet,hot)<wet.radius+hot.radius)hot.end=0;
+s.zones=s.zones.filter(z=>z.end>s.t);
+if(s.settings.supplies&&s.t>=s.nextDrop){s.nextDrop+=40;s.events.unshift({t:s.t,text:'Supply drop at the arena center!'});for(let i=0;i<8;i++)s.pickups.push({id:uid(),x:600+Math.cos(i*Math.PI/4)*80,y:500+Math.sin(i*Math.PI/4)*80,element:i%4});}
+const alive=s.players.filter(p=>p.alive&&!p.spectator);if(s.settings.mode==='skirmish'){if(s.t>=180)finish(s);}else if(s.settings.mode==='teams'?new Set(alive.map(p=>p.team)).size<=1:alive.length<=1)finish(s);if(s.phase==='finished')break;
+}
+s.revision++;
+}
+function publicState(s){return {...s,players:s.players.map(({token,input,seq,...p})=>p)};}
+</script><script>const $=id=>document.getElementById(id);const show=id=>$(id).classList.remove('hidden'),hide=id=>$(id).classList.add('hidden');
+let state=null,myId=null,room=null,token=null,isPractice=false,joinMode='create',seq=Date.now(),busy=false,queue=[],keys={},input={mx:0,my:0,ax:600,ay:500,fire:false},selected=0,filter=0,lastRound=-1,pollTimer=null,lastRender=0,snapshotAt=0,transform={scale:1,ox:0,oy:0},lastNet=0,practiceTimer=null,pins=JSON.parse(localStorage.getItem('ec-pins')||'["fireball","heal","shield"]');
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function setHTML(id,html){const el=$(id);if(el.innerHTML!==html)el.innerHTML=html;}
+function focusArena(){$('battle').focus({preventScroll:true});}
+function startBattle(){if(!state)return;const connected=state.players.filter(p=>!p.teamBot&&Date.now()-p.seen<30000);if(connected.length<2){toast('Add a second player before starting. Use another tab, browser, or device.');return;}if(myId!==state.host){toast('Only the host can start the battle.');return;}sendCommand({type:'start'});}
+function me(){return state?.players.find(p=>p.id===myId);}
+function toast(s){$('toast').textContent=s;show('toast');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>hide('toast'),2800);}
+function showHelp(){show('helpmodal');syncBasicAttack();}
+function openJoin(mode){joinMode=mode;$('jointitle').textContent=mode==='create'?'Create your room.':'Join your friends.';$('codefield').classList.toggle('hidden',mode==='create');$('nickname').value=localStorage.getItem('ec-name')||'';$('joinerror').textContent='';show('joinmodal');$('nickname').focus();}
+async function api(data){const r=await fetch('/.netlify/functions/game',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});let result;try{result=await r.json();}catch{throw Error('The game server is unavailable. Try again shortly.');}if(!r.ok)throw Error(result.error||'Request failed.');return result;}
+async function connect(){const name=$('nickname').value.trim();if(!name)return;const code=$('joincode').value.trim().toUpperCase();if(joinMode==='join'&&!/^[A-Z0-9]{6}$/.test(code)){$('joinerror').textContent='Enter the six-character room code.';return;}$('joinbtn').disabled=true;try{token=uid();let r=await api({type:joinMode,name,code,token});isPractice=false;room=r.state.code;myId=r.playerId;state=r.state;snapshotAt=performance.now();localStorage.setItem('ec-name',name);sessionStorage.setItem('ec-session',JSON.stringify({room,token,myId}));hide('joinmodal');hide('home');show('lobby');startPolling();renderUI();}catch(e){$('joinerror').textContent=e.message;}finally{$('joinbtn').disabled=false;}}
+function sendCommand(c){if(!state)return;queue.push({command:c,seq:++seq});if(isPractice){drainPractice();renderUI();}else poll();}
+function settings(){sendCommand({type:'settings',mode:$('mode').value,pace:Number($('pace').value),supplies:$('supplies').checked,botDifficulty:$('botdifficulty').value});}
+function startPolling(){clearInterval(pollTimer);pollTimer=setInterval(poll,120);}
+async function poll(){if(busy||!room||isPractice)return;busy=true;const activeRoom=room,activeToken=token;const a=queue[0];try{let r=await api({type:'sync',code:room,token,input,...a});if(room!==activeRoom||token!==activeToken||isPractice)return;state=r.state;snapshotAt=performance.now();lastNet=snapshotAt;if(a){queue.shift();confirmPrepared(a.command);}renderUI();}catch(e){if(a&&e.message!=='Room is busy. Please retry.'){queue.shift();toast(e.message);}if(e.message.includes('expired')||e.message.includes('not found'))leave();else if(performance.now()-lastNet>4000)$('statushint').textContent='Connection interrupted — retrying…';}finally{busy=false;}}
+function leave(){clearInterval(pollTimer);clearInterval(practiceTimer);if(room&&!isPractice)api({type:'leave',code:room,token}).catch(()=>{});room=null;state=null;lockedTarget=null;currentTarget=null;queue=[];keys={};moveTouch=null;aimTouch=null;input.mx=0;input.my=0;input.fire=false;mouseFire=false;resetTouchControls();myId=null;sessionStorage.removeItem('ec-session');hide('game');hide('lobby');hide('resultmodal');hide('recipesmodal');show('header');show('home');isPractice=false;}
+async function copyCode(){
+ try{if(!navigator.clipboard?.writeText)throw Error('Fallback');await navigator.clipboard.writeText(room);toast('Room code copied: '+room);return;}catch{}
+ const el=document.createElement('textarea');el.value=room;el.readOnly=true;el.style.cssText='position:fixed;top:0;left:0;opacity:.01;font-size:16px';document.body.appendChild(el);el.focus();el.select();el.setSelectionRange(0,el.value.length);
+ let copied=false;try{copied=document.execCommand('copy');}catch{}el.remove();
+ if(copied)toast('Room code copied: '+room);else{show('copymodal');$('manualcode').value=room;$('manualcode').focus();$('manualcode').select();toast('Touch and hold the code to copy it.');}
+}
+function backLobby(){hide('resultmodal');hide('game');show('header');show('lobby');}
+let tray=[0,0,0,0];
+function openRecipes(){show('recipesmodal');syncBasicAttack();renderRecipes();renderTray();}
+function renderTray(){let total=tray.reduce((a,b)=>a+b,0);$('traycontrols').innerHTML=ELEMENTS.map((e,i)=>'<button class="small" style="color:var(--'+e+')" onclick="if(tray.reduce((a,b)=>a+b,0)<5){tray['+i+']++;renderTray()}">'+e+' + ('+tray[i]+')</button>').join('');let r=RECIPES.find(r=>r.cost.every((v,i)=>v===tray[i]));$('trayresult').innerHTML=r?'<strong style="color:var(--ink)">'+r.name+'</strong> · '+r.description+' <button class="small" '+(affordable(r)?'':'disabled')+' onclick="sendCommand({type:\'load\',recipe:\''+r.id+'\'})">Craft</button>':total<2?'Choose two to five ingredients. Order does not matter.':'No recipe for this combination. Nothing is consumed.';}
+function suggestedRecipes(p){
+ if(!p||!p.alive)return [];
+ const pay=r=>r.cost.every((n,i)=>p.inv[i]>=n),def=r=>['heal','shield'].includes(r.kind);
+ const rank=r=>r.tier*10+(r.heal?(p.hp<75?80:-50):0)+(r.shield?(p.shield<10?25:-30):0);
+ const available=RECIPES.filter(pay).sort((a,b)=>rank(b)-rank(a));
+ const defense=available.find(def)||RECIPES.find(r=>r.id===(p.hp<75?'heal':'shield'));
+ const picks=available.filter(r=>r.id!==defense.id).slice(0,5);
+ for(const r of RECIPES)if(picks.length<5&&r.id!==defense.id&&!picks.some(x=>x.id===r.id))picks.push(r);
+ return [...picks,defense];
+}
+let lockedTarget=null,currentTarget=null,lastDirection={x:1,y:0};
+function resolveTarget(s,p,lock,current,range){
+ const candidates=s.players.filter(q=>enemies(s,p,q)&&dist(p,q)<=range&&clearRoute(s,p,q)).sort((a,b)=>dist(p,a)-dist(p,b));
+ const preferred=candidates.find(q=>q.id===lock);if(preferred)return preferred;
+ const previous=candidates.find(q=>q.id===current),nearest=candidates[0];
+ return previous&&nearest&&dist(p,previous)<=dist(p,nearest)*1.25+35?previous:nearest||null;
+}
+function updateTarget(range=480){const p=me();if(!p||!state)return null;const t=resolveTarget(state,p,lockedTarget,currentTarget,range);currentTarget=t?.id||null;if(t){input.ax=t.x;input.ay=t.y;}else{input.ax=clamp(p.x+lastDirection.x*range,0,1200);input.ay=clamp(p.y+lastDirection.y*range,0,1000);}return t;}
+function selectOpponent(e){const p=me();if(!p||!p.alive)return;const point={x:(e.clientX-transform.ox)/transform.scale,y:(e.clientY-transform.oy)/transform.scale};const target=state.players.filter(q=>enemies(state,p,q)&&dist(q,point)<Math.max(24,24/transform.scale)).sort((a,b)=>dist(a,point)-dist(b,point))[0];lockedTarget=target?.id||null;updateTarget();toast(target?'Target locked: '+target.name:'Automatic targeting');}
+function craftSuggested(id){
+ const r=RECIPES.find(r=>r.id===id),p=me();if(!affordable(r)){toast('Collect the ingredients or wait for the cooldown.');return;}
+ let aimPoint={ax:p.x,ay:p.y};
+ if(r.kind==='dash'){aimPoint={ax:clamp(p.x+lastDirection.x*r.range,0,1200),ay:clamp(p.y+lastDirection.y*r.range,0,1000)};}
+ else if(!['heal','shield'].includes(r.kind)&&!r.heal){const t=updateTarget(r.range||480);if(!t){toast('No visible opponent in spell range.');return;}aimPoint={ax:t.x,ay:t.y};}
+ sendCommand({type:'load',recipe:id,fromSuggestion:true,instant:true,aim:aimPoint});
+}
+function confirmPrepared(c){if(!c?.fromSuggestion)return;const r=RECIPES.find(r=>r.id===c.recipe);selected=0;if(!matchMedia('(pointer:coarse)').matches)focusArena();toast(['heal','shield'].includes(r.kind)?r.name+' used.':c.instant?r.name+' cast.':r.name+' loaded — aim and release to cast.');}
+function needsOpponent(r){return !!r&&!['heal','shield','dash'].includes(r.kind)&&!r.heal;}
+function spellInRange(r,p=me()){return !needsOpponent(r)||!!(p&&state&&resolveTarget(state,p,lockedTarget,currentTarget,r.range||480));}
+function refreshSpellAvailability(){
+ const p=me();if(!p)return;
+ for(let i=0;i<6;i++){const b=$('suggestion'+i),r=RECIPES.find(r=>r.id===b.recipeId);if(!r)continue;
+ const inRange=spellInRange(r,p),ready=affordable(r)&&inRange;b.disabled=!ready;b.classList.toggle('castready',ready);
+ const missing=r.cost.map((n,j)=>n>p.inv[j]?(n-p.inv[j])+' '+ELEMENTS[j]:null).filter(Boolean);
+ $('suggestdest'+i).textContent=missing.length?'Need '+missing.join(', '):!inRange?'Out of range':p.items[0]&&!['heal','shield'].includes(r.kind)?'Cast loaded spell first':!affordable(r)?'Cooling down':['heal','shield'].includes(r.kind)?'Use now':'Cast now';
+ }
+}
+function renderSuggestions(p){
+ const picks=suggestedRecipes(p);$('quicklabel').textContent=(lockedTarget?'TARGET LOCKED':'AUTO TARGET')+' · TAP / 1–6 TO CAST · 6 DEFENSE';
+ for(let i=0;i<6;i++){const r=picks[i],b=$('suggestion'+i);b.classList.toggle('hidden',!r);b.recipeId=r?.id;b.disabled=!r||!affordable(r);
+ if(r){$('suggestname'+i).textContent=(i+1)+'. '+r.name;setHTML('suggestcost'+i,costHTML(r));b.title=r.description;}}
+ refreshSpellAvailability();
+}
+
+function activateSuggestion(button){if(performance.now()<(button.ignoreClickUntil||0))return;craftSuggested(button.pressedRecipe||button.recipeId);button.pressedRecipe=null;}
+for(let i=0;i<6;i++)$('suggestion'+i).addEventListener('pointerdown',e=>{
+ const button=e.currentTarget;if(button.disabled)return;
+ button.pressedRecipe=button.recipeId;
+ if(e.pointerType==='touch'){e.preventDefault();e.stopPropagation();button.ignoreClickUntil=performance.now()+800;craftSuggested(button.recipeId);button.pressedRecipe=null;}
+});
+function affordable(r){const p=me();return !!r&&!!p&&p.alive&&state.phase==='playing'&&r.cost.every((n,i)=>p.inv[i]>=n)&&(['heal','shield'].includes(r.kind)?(r.kind!=='heal'||state.t>=p.potionAt)&&(r.tier<4||state.t>=p.specialAt):!p.items[0]&&state.t>=p.attackAt&&(r.tier<4||state.t>=p.specialAt));}
+function costHTML(r){return r.cost.map((n,i)=>n?'<span style="color:var(--'+ELEMENTS[i]+')">'+['◆','●','■','✦'][i]+' '+n+'</span>':'').join('');}
+function renderRecipes(){const choices=[[0,'All recipes'],[2,'2 elements'],[3,'3 elements'],[4,'4 elements'],[5,'5 elements']];$('filters').innerHTML=choices.map(([n,label])=>'<button class="small '+(filter===n?'active':'')+'" onclick="filter='+n+';renderRecipes()">'+label+'</button>').join('');$('recipegrid').innerHTML=RECIPES.filter(r=>!filter||r.tier===filter).map(r=>'<article class="recipe"><div class="row"><h3>'+r.name+'</h3><button class="small" aria-label="Pin '+r.name+'" onclick="pin(\''+r.id+'\')">'+(pins.includes(r.id)?'★':'☆')+'</button></div><div class="cost">'+costHTML(r)+'</div><p>'+r.description+(r.tier===3?' · '+(r.damage?r.damage+' damage':r.heal?r.heal+' healing':r.shield?r.shield+' shield':'increased reach'):'')+'</p><button class="small" '+(affordable(r)?'':'disabled')+' onclick="sendCommand({type:\'load\',recipe:\''+r.id+'\'})">Craft'+(r.tier>=4?' · power spell':'')+'</button></article>').join('');}
+function pin(id){if(pins.includes(id))pins=pins.filter(x=>x!==id);else{if(pins.length>=3){toast('Unpin a favorite first (maximum three).');return;}pins.push(id);}localStorage.setItem('ec-pins',JSON.stringify(pins));renderRecipes();renderHUD();}
+function renderUI(){if(!state)return;const p=me();if(!p)return;const playing=state.phase==='playing';if(playing){hide('home');hide('lobby');hide('header');hide('resultmodal');show('game');if(lastRound!==state.round){lastRound=state.round;queue=[];selected=0;hide('recipesmodal');focusArena();}}
+if(state.phase==='finished'&&lastRound!==-state.round){lastRound=-state.round;show('resultmodal');$('winner').textContent=state.winner==='Draw'?'A magical draw.':state.winner+' wins!';$('results').innerHTML=state.results.map((p,i)=>'<tr><td><span style="color:'+p.color+'">'+(i+1)+'. '+escapeHTML(p.name)+'</span></td><td>'+p.kills+'</td><td>'+p.damage+'</td></tr>').join('');$('resultnote').textContent=state.settings.mode==='skirmish'?'Ranked by eliminations, then damage dealt.':'Placement follows survival. Eliminations and damage are bonus statistics.';}
+$('roomcode').textContent=room||'PRACTICE';setHTML('players',state.players.map(q=>'<div class="playerrow"><div class="avatar" style="--pc:'+q.color+'">'+escapeHTML(q.name[0].toUpperCase())+'</div><div><strong>'+escapeHTML(q.name)+'</strong><br><small>'+(q.teamBot?'Computer · '+q.difficulty:q.id===state.host?'Host':q.id===myId?'You':'Wizard')+(state.settings.mode==='teams'?' · Team '+(state.players.indexOf(q)%2===0?'Sun':'Moon'):'')+'</small></div><span class="status" style="color:'+(q.ready?'var(--air)':'var(--muted)')+'">'+(q.teamBot?'AI teammate':q.spectator?'Spectating':Date.now()-q.seen>3000?'Reconnecting…':q.ready?'Ready ✓':'In room')+'</span></div>').join(''));const host=myId===state.host;$('start').disabled=!host;$('rematch').disabled=!host&&!isPractice;$('ready').textContent=p.ready?'Ready ✓':'Ready up';$('lobbynote').textContent=host?'Start when at least two players are here. Each tab can join separately. Ready indicators are optional.':'Your host starts the battle. Each tab can join as a separate wizard.';for(const id of ['mode','pace','supplies','botdifficulty'])$(id).disabled=!host;$('botdifficulty').value=state.settings.botDifficulty||'medium';$('botsettings').classList.toggle('hidden',state.settings.mode!=='teams');$('mode').value=state.settings.mode;$('pace').value=state.settings.pace;$('supplies').checked=state.settings.supplies;renderHUD();if(!$('recipesmodal').classList.contains('hidden')){const pkey=p.inv.join(',')+':'+p.items.join(',');if(window.recipeKey!==pkey){window.recipeKey=pkey;renderRecipes();renderTray();}}}
+function renderHUD(){let p=me();if(!p)return;$('myname').textContent=p.name;$('hp').textContent=Math.ceil(p.hp)+' / 100';$('healthfill').style.width=p.hp+'%';$('shieldtext').textContent=p.shield>0?'Shield '+Math.ceil(p.shield)+' · '+Math.max(0,Math.ceil(p.shieldUntil-state.t))+'s':p.alive?'No shield':'Spectating';let alive=state.players.filter(p=>p.alive&&!p.spectator).length;$('alivecount').textContent=isPractice?'Practice arena':state.settings.mode==='skirmish'?'Skirmish · '+p.kills+' eliminations':alive+' wizard'+(alive===1?'':'s')+' remain';$('clock').textContent=Math.floor(state.t/60).toString().padStart(2,'0')+':'+Math.floor(state.t%60).toString().padStart(2,'0');const stormTime=90/state.settings.pace;$('storm').textContent=state.settings.mode==='skirmish'?Math.max(0,Math.ceil(180-state.t))+'s left':state.t<stormTime?'Storm in '+Math.ceil(stormTime-state.t)+'s':'Storm closing';setHTML('inventory',ELEMENTS.map((e,i)=>'<span style="color:var(--'+e+')">'+['◆','●','■','✦'][i]+'<span class="count">'+p.inv[i]+'</span></span>').join('')+'<span style="font-size:10px;color:var(--muted)">'+p.inv.reduce((a,b)=>a+b,0)+'/8</span>');
+const loaded=RECIPES.find(r=>r.id===p.items[0]);$('loadedname').textContent=loaded?loaded.name:'No spell loaded';$('loadedhint').textContent=loaded?'Aim and release / click or F to cast':'Choose a suggestion below';
+renderSuggestions(p);let potion=Math.ceil(p.potionAt-state.t),power=Math.ceil(p.specialAt-state.t);$('statushint').textContent=!p.alive?(state.settings.mode==='skirmish'?'Respawning in '+Math.max(0,Math.ceil(p.respawnAt-state.t))+'s':'Eliminated · watching the remaining wizards'):isPractice?'Practice: ingredient pack refills when empty · three sparring bots':(potion>0?'Potion '+potion+'s ':'')+(power>0?'Power spell '+power+'s':'');setHTML('feed',state.events.filter(e=>state.t-e.t<7).slice(0,3).map(e=>'<div>'+escapeHTML(e.text)+'</div>').join(''));}
+function selectSlot(i){selected=i;const r=RECIPES.find(r=>r.id===me()?.items[i]);if(!r){openRecipes();return;}if(!matchMedia('(pointer:coarse)').matches||['heal','shield'].includes(r.kind))sendCommand({type:'cast',slot:i});renderHUD();}
+let mouseFire=false,touchFire=false;
+function syncBasicAttack(){input.fire=!!(state?.phase==='playing'&&me()?.alive&&$('recipesmodal').classList.contains('hidden')&&$('helpmodal').classList.contains('hidden')&&updateTarget(480)&&(mouseFire||touchFire||keys[' ']));}
+window.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))return;const k=e.key.toLowerCase();if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(k))e.preventDefault();keys[k]=true;syncBasicAttack();if(!e.repeat&&state?.phase==='playing'&&$('recipesmodal').classList.contains('hidden')&&$('helpmodal').classList.contains('hidden')){if(!matchMedia('(pointer:coarse)').matches&&/^[1-6]$/.test(k)){e.preventDefault();const button=$('suggestion'+(Number(k)-1));if(!button.disabled)craftSuggested(button.recipeId);}else if(k==='f')sendCommand({type:'cast',slot:0});}if(k==='e'&&!e.repeat){if($('recipesmodal').classList.contains('hidden'))openRecipes();else hide('recipesmodal');}if(k==='escape'){hide('recipesmodal');hide('helpmodal');}});
+window.addEventListener('keyup',e=>{keys[e.key.toLowerCase()]=false;if(e.key===' '&&state?.phase==='playing')e.preventDefault();syncBasicAttack();});window.addEventListener('blur',()=>{keys={};mouseFire=false;resetTouchControls();input.mx=0;input.my=0;input.fire=false;});
+$('battle').addEventListener('pointerdown',e=>{if(state?.phase!=='playing')return;e.preventDefault();selectOpponent(e);});
+const touchResetters=[];let moveTouch=null,aimTouch=null;function resetTouchControls(){moveTouch=null;aimTouch=null;touchFire=false;for(const reset of touchResetters)reset();}function stick(id,kind){const el=$(id),knob=el.querySelector('.knob');let active=null;function set(e){const b=el.getBoundingClientRect(),dx=e.clientX-b.left-b.width/2,dy=e.clientY-b.top-b.height/2,len=Math.hypot(dx,dy),radius=b.width/2-12,m=Math.min(len,radius);let nx=len?dx/len:0,ny=len?dy/len:0;knob.style.transform='translate('+nx*m+'px,'+ny*m+'px)';if(kind==='move'){moveTouch={x:nx*m/radius,y:ny*m/radius};}else{const p=me();if(!p)return;const r=RECIPES.find(r=>r.id===p.items[selected]);let reach=(r?.range||480)*Math.max(.08,m/radius);aimTouch={x:nx,y:ny,strength:m/radius};input.ax=clamp(p.x+nx*reach,0,1200);input.ay=clamp(p.y+ny*reach,0,1000);}}
+el.addEventListener('pointerdown',e=>{e.preventDefault();if(active!==null)return;active=e.pointerId;el.setPointerCapture(active);set(e);});el.addEventListener('pointermove',e=>{if(active===e.pointerId)set(e);});function end(e){if(active!==e.pointerId)return;active=null;knob.style.transform='';if(kind==='move'){moveTouch=null;input.mx=0;input.my=0;}else{aimTouch=null;if(e.type==='pointerup')sendCommand({type:'cast',slot:selected});}}el.addEventListener('pointerup',end);el.addEventListener('pointercancel',end);el.addEventListener('lostpointercapture',end);touchResetters.push(()=>{active=null;knob.style.transform='';});}
+stick('moveStick','move');stick('aimStick','aim');
+const basicTouches=new Set();
+$('basicbtn').addEventListener('pointerdown',e=>{e.preventDefault();basicTouches.add(e.pointerId);e.currentTarget.setPointerCapture(e.pointerId);touchFire=basicTouches.size>0;syncBasicAttack();});
+function releaseBasic(e){basicTouches.delete(e.pointerId);touchFire=basicTouches.size>0;syncBasicAttack();}
+for(const type of ['pointerup','pointercancel','lostpointercapture'])$('basicbtn').addEventListener(type,releaseBasic);
+touchResetters.push(()=>basicTouches.clear());
+
+function practice(){leave();isPractice=true;room='PRACTICE';token=uid();state=newRoom(room,Date.now());let p=addPlayer(state,localStorage.getItem('ec-name')||'Apprentice',token,Date.now());myId=p.id;for(let i=0;i<3;i++){let b=addPlayer(state,['Ember Bot','Frost Bot','Gale Bot'][i],uid(),Date.now());b.bot=true;}start(state,Date.now());p.inv=[2,2,2,2];state.settings.mode='skirmish';lastRound=-1;hide('home');practiceTimer=setInterval(()=>{if(!state||!isPractice)return;const now=Date.now();const p=me();p.seen=now;p.input={...input};if(p.inv.reduce((a,b)=>a+b,0)===0)p.inv=[2,2,2,2];for(const b of state.players.filter(p=>p.bot)){b.seen=now;const angle=state.t*.35+state.players.indexOf(b)*2;b.input={mx:Math.cos(angle),my:Math.sin(angle),ax:p.x,ay:p.y,fire:dist(b,p)<400&&Math.sin(state.t+b.team)>0};}drainPractice();advance(state,now);snapshotAt=performance.now();renderUI();},33);renderUI();}
+function drainPractice(){while(queue.length){let a=queue.shift();try{action(state,me(),{...a,input},Date.now());confirmPrepared(a.command);if(a.command.type==='start'){me().inv=[2,2,2,2];state.settings.mode='skirmish';}}catch(e){toast(e.message);}}}
+function fitCanvas(canvas){const dpr=Math.min(devicePixelRatio||1,2),w=canvas.clientWidth,h=canvas.clientHeight;if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);}return {w,h,dpr};}
+function circle(ctx,x,y,r,fill,stroke){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.stroke();}}
+const EC=['#ff9669','#83d5ff','#d8c185','#9ce1c5'];
+function drawIngredient(c,x,y,i,t){c.save();c.translate(x,y+Math.sin(t*2+x)*2);c.shadowColor=EC[i];c.shadowBlur=14;c.fillStyle=EC[i];c.beginPath();if(i===0){c.moveTo(0,-10);c.lineTo(8,1);c.lineTo(0,9);c.lineTo(-8,1);}else if(i===1){c.arc(0,1,7,0,Math.PI*2);}else if(i===2){c.rect(-7,-7,14,14);}else{c.moveTo(0,-10);c.lineTo(3,-3);c.lineTo(10,0);c.lineTo(3,3);c.lineTo(0,10);c.lineTo(-3,3);c.lineTo(-10,0);c.lineTo(-3,-3);}c.fill();c.restore();}
+function drawArena(canvas,s,decor=false){const {w,h,dpr}=fitCanvas(canvas),c=canvas.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);c.fillStyle='#15151f';c.fillRect(0,0,w,h);let scale=Math.min(w/1200,h/1000),ox=(w-1200*scale)/2,oy=(h-1000*scale)/2;if(decor){scale=Math.max(w/1200,h/1000)*1.08;ox=(w-1200*scale)/2;oy=(h-1000*scale)/2;}else transform={scale,ox,oy};c.translate(ox,oy);c.scale(scale,scale);c.fillStyle='#20202c';c.fillRect(0,0,1200,1000);c.strokeStyle='#ffffff06';c.lineWidth=1;for(let x=0;x<=1200;x+=50){c.beginPath();c.moveTo(x,0);c.lineTo(x,1000);c.stroke();}for(let y=0;y<=1000;y+=50){c.beginPath();c.moveTo(0,y);c.lineTo(1200,y);c.stroke();}
+c.strokeStyle='#4f426755';c.lineWidth=2;circle(c,600,500,165,null,'#4f426755');circle(c,600,500,180,null,'#4f426733');for(let i=0;i<8;i++){let a=i*Math.PI/4;c.beginPath();c.moveTo(600+Math.cos(a)*165,500+Math.sin(a)*165);c.lineTo(600+Math.cos(a)*190,500+Math.sin(a)*190);c.stroke();}
+for(const o of s.obstacles||OBSTACLES){c.fillStyle='#11111b';c.fillRect(o.x+5,o.y+8,o.w,o.h);c.fillStyle='#393645';c.fillRect(o.x,o.y,o.w,o.h);c.fillStyle='#4a4459';c.fillRect(o.x,o.y,o.w,5);c.strokeStyle='#5c5066';c.strokeRect(o.x,o.y,o.w,o.h);}
+for(const z of s.zones){const warning=s.t<z.start;c.globalAlpha=warning?.2:.3;circle(c,z.x,z.y,z.radius,z.color);c.globalAlpha=1;c.lineWidth=2;c.setLineDash(warning?[8,8]:[]);circle(c,z.x,z.y,z.radius,null,z.color);c.setLineDash([]);if(warning){c.fillStyle=z.color;c.font='bold 14px system-ui';c.textAlign='center';c.fillText('!',z.x,z.y+5);}}
+for(const q of s.sources){if(s.t>=q.respawn)drawIngredient(c,q.x,q.y,q.element,s.t);else{c.globalAlpha=.25;circle(c,q.x,q.y,7,null,EC[q.element]);c.globalAlpha=1;}}for(const q of s.pickups)drawIngredient(c,q.x,q.y,q.element,s.t);
+for(const b of s.shots){c.save();c.shadowBlur=12;c.shadowColor=b.color;circle(c,b.x,b.y,b.damage>10?7:4,b.color);c.restore();}
+for(const p of s.players){if(!p.alive)continue;if(p.id===currentTarget){c.lineWidth=3;circle(c,p.x,p.y,29,null,lockedTarget===p.id?'#ffe09b':'#b5a0ff');}circle(c,p.x,p.y+8,16,'#0005');if(p.shield>0){c.lineWidth=3;circle(c,p.x,p.y,23,null,'#83d5ff');}if(p.spawnProtection>s.t){c.lineWidth=1;circle(c,p.x,p.y,27,null,'#ffffff66');}c.save();c.shadowColor=p.color;c.shadowBlur=12;circle(c,p.x,p.y,14,p.color);c.restore();c.fillStyle='#221d33';c.beginPath();c.moveTo(p.x-8,p.y-6);c.lineTo(p.x,p.y-21);c.lineTo(p.x+8,p.y-6);c.fill();circle(c,p.x-4,p.y-1,2,'#221d33');circle(c,p.x+4,p.y-1,2,'#221d33');c.fillStyle='#f5efff';c.textAlign='center';c.font='12px system-ui';c.fillText(p.name+(p.id===myId?' • YOU':''),p.x,p.y-34);c.fillStyle='#11111d';c.fillRect(p.x-19,p.y+23,38,4);c.fillStyle=p.color;c.fillRect(p.x-19,p.y+23,38*p.hp/100,4);if(s.settings.mode==='teams'){c.fillStyle=p.team===0?'#ffe09b':'#a7c8ff';c.font='9px system-ui';c.fillText(p.team===0?'SUN':'MOON',p.x,p.y+40);}}
+const p=s.players.find(p=>p.id===myId);if(!decor&&p?.alive){let r=RECIPES.find(r=>r.id===p.items[selected])||{kind:'bolt',range:480};const a=aim(p,input,r.range||500);c.save();c.strokeStyle='#e2d6ff88';c.fillStyle='#b5a0ff10';c.lineWidth=1.5;c.setLineDash([5,6]);if(['zone','meteor','mine'].includes(r.kind)){circle(c,a.x,a.y,r.radius||52,'#b5a0ff15','#e2d6ff88');c.beginPath();c.moveTo(p.x,p.y);c.lineTo(a.x,a.y);c.stroke();}else if(r.kind==='cone'){let angle=Math.atan2(a.dy,a.dx);c.beginPath();c.moveTo(p.x,p.y);c.arc(p.x,p.y,r.range,angle-.98,angle+.98);c.closePath();c.fill();c.stroke();}else if(['heal','shield','wave'].includes(r.kind)){circle(c,p.x,p.y,r.range||27,'#b5a0ff10','#e2d6ff88');}else{c.beginPath();c.moveTo(p.x+a.dx*23,p.y+a.dy*23);c.lineTo(p.x+a.dx*r.range,p.y+a.dy*r.range);c.stroke();circle(c,a.x,a.y,7,null,'#e2d6ff88');}c.restore();}
+if(s.radius<760){c.fillStyle='#ab5de428';c.beginPath();c.rect(0,0,1200,1000);c.arc(600,500,s.radius,0,Math.PI*2,true);c.fill('evenodd');c.lineWidth=4;circle(c,600,500,s.radius,null,'#c48afa');}c.strokeStyle='#51445f';c.lineWidth=3;c.strokeRect(0,0,1200,1000);}
+let artState=newRoom('ART',Date.now());artState.t=0;artState.radius=760;for(let i=0;i<4;i++){let p=addPlayer(artState,['Ember','Gale','Terra','Frost'][i],uid(),Date.now());p.x=[450,790,700,350][i];p.y=[430,580,290,650][i];}for(let i=0;i<18;i++)artState.sources.push({x:270+(i%6)*130,y:280+Math.floor(i/6)*190,element:i%4,respawn:0});
+let visualPlayers=new Map(),previousFrame=0;
+function animatedProjectiles(s,elapsed){
+ // Draw between server snapshots; combat and collision results remain authoritative.
+ const age=clamp(elapsed,0,.18);
+ return s.shots.flatMap(b=>{
+  if(b.life!==undefined&&b.life<=age)return [];
+  const dx=(b.vx||0)*age,dy=(b.vy||0)*age,steps=Math.max(1,Math.ceil(Math.hypot(dx,dy)/4));
+  let x=b.x,y=b.y;
+  for(let i=1;i<=steps;i++){
+   const nx=b.x+dx*i/steps,ny=b.y+dy*i/steps;
+   if(blocked(nx,ny,3,s.obstacles||OBSTACLES))return [];
+   x=nx;y=ny;
+  }
+  return [{...b,x,y}];
+ });
+}
+function frame(now){const delta=Math.min(.05,(now-previousFrame)/1000||.016);previousFrame=now;syncBasicAttack();if(!moveTouch){input.mx=(keys.d||keys.arrowright?1:0)-(keys.a||keys.arrowleft?1:0);input.my=(keys.s||keys.arrowdown?1:0)-(keys.w||keys.arrowup?1:0);}else{input.mx=moveTouch.x;input.my=moveTouch.y;}if(Math.hypot(input.mx,input.my)>0){const n=Math.hypot(input.mx,input.my);lastDirection={x:input.mx/n,y:input.my/n};}updateTarget();if(state?.phase==='playing')refreshSpellAvailability();if(state&&!$('game').classList.contains('hidden')){const players=state.players.map(p=>{let v=visualPlayers.get(p.id)||{x:p.x,y:p.y};if(!p.alive||Math.hypot(p.x-v.x,p.y-v.y)>150){v.x=p.x;v.y=p.y;}else{let f=1-Math.exp(-18*delta);v.x+=(p.x-v.x)*f;v.y+=(p.y-v.y)*f;}visualPlayers.set(p.id,v);return {...p,x:v.x,y:v.y};});const shots=animatedProjectiles(state,(now-snapshotAt)/1000);drawArena($('battle'),{...state,players,shots});}else if(!$('home').classList.contains('hidden')){artState.t=now/1000;artState.shots=[{x:480+(now/5)%240,y:440+(now/10)%100,color:'#ff9669',damage:25}];drawArena($('art'),artState,true);}requestAnimationFrame(frame);}requestAnimationFrame(frame);
+(async()=>{let session;try{session=JSON.parse(sessionStorage.getItem('ec-session'));}catch{}if(!session)return;try{let r=await api({type:'sync',code:session.room,token:session.token,input:{mx:0,my:0,fire:false,ax:600,ay:500}});state=r.state;snapshotAt=performance.now();room=session.room;token=session.token;myId=session.myId;seq=Date.now();hide('home');show('lobby');startPolling();renderUI();toast('Reconnected to room '+room);}catch{sessionStorage.removeItem('ec-session');}})();
+</script><div class="modalback hidden" id="copymodal"><div class="card modal"><button class="modalclose" onclick="hide('copymodal')">×</button><h2>Room code</h2><p>Touch and hold to copy this code.</p><input id="manualcode" readonly aria-label="Room code"></div></div></body></html>
